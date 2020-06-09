@@ -1,12 +1,29 @@
 app-forms-page {
   .container {
     margin-top: 50px;
+    padding: 0 5%;
+    background: #e4e3e3;
+    border-radius: 15px;
+    box-shadow: -8px 10px 23px #cacaca
   }
-  
+  .input-image {
+    margin-right: 2%;
+  }
+  .tank-container {
+    box-shadow: 3px 14px 33px #bdbdbd;
+    border-radius: 20px;
+    padding: 14px;
+    margin-top: 20px;
+  }
   .section-title {
     margin-bottom: 20px;
   }
-
+  .input-file {
+    margin-right: 2%;
+  }
+  .mat-form-field {
+    width: 185px;
+  }
   .user-details-container {
     padding: 20px;
     text-align: center;
@@ -27,11 +44,9 @@ app-forms-page {
       font-size: 12px;
       margin-top: 20px;
       display: block;
-      color: rgba(0, 0, 0, 0.70);
+      color: rgba(0, 0, 0, 0.7);
     }
   }
-
-
 
   .full-width {
     width: 100%;
