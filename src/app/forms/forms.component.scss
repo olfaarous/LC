@@ -1,52 +1,31 @@
 app-forms-page {
   .container {
     margin-top: 50px;
-    padding: 0 5%;
-    background: #e4e3e3;
-    border-radius: 15px;
-    box-shadow: -8px 10px 23px #cacaca
   }
-  .input-image {
-    margin-right: 2%;
-  }
-  .tank-container {
-    box-shadow: 3px 14px 33px #bdbdbd;
-    border-radius: 20px;
-    padding: 14px;
-    margin-top: 20px;
-  }
+  
   .section-title {
     margin-bottom: 20px;
   }
-  .input-file {
-    margin-right: 2%;
+  .FormHeader{
+    //border: 1px solid black;
   }
-  .mat-form-field {
-    width: 185px;
+  .FormHeader .title{
+    margin : 24px 0;
   }
-  .user-details-container {
-    padding: 20px;
-    text-align: center;
-
-    .user-image {
-      width: 100%;
-      border-radius: 50%;
+  .FormHeader .title span{
+    color: #202F8B;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .FormContainer{
+    padding: 0 20px;
+    margin-top: 20px;
     }
 
-    .user-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-top: 30px;
-      display: block;
-    }
+ 
 
-    .user-bio {
-      font-size: 12px;
-      margin-top: 20px;
-      display: block;
-      color: rgba(0, 0, 0, 0.7);
-    }
-  }
+
 
   .full-width {
     width: 100%;
@@ -70,4 +49,55 @@ app-forms-page {
   .submit-btn {
     margin-top: 30px;
   }
+
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: #CDD0E5;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color:#202F8B;
+}
+.mat-select-arrow {
+  color: rgb(48,62,147);
+}
+
+.mat-input-element {
+  color: rgb(33, 51, 165);
+}
+.tank-container{
+  background-color: #F2F3F9;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.mat-select-value {
+  color: #202F8B !important;
+}
+
+//checkbox style
+label.mat-checkbox-layout{
+  margin-bottom: -1.75rem;
+}
+.mat-checkbox-ripple .mat-ripple-element,.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #202F8B !important;
+}
+span.mat-checkbox-label{
+  color: #202F8B !important;
+}
+.mat-raised-button.submit-btn{
+  background-color:#202F8B;
+  width:50%;
+  min-width: 104px;
+  max-width: 248px;
+}
+img.displayed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+}
+
+.right {
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+}
 }

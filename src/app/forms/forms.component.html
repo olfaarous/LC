@@ -1,199 +1,201 @@
 <div class="container">
-
-
-  <form [formGroup]="vesselInfoForm">
-    <div style="display: table; margin: 10px auto; padding: 10px;">
-      <h2 class="section-title">New Vessels Onboarding</h2>
+  <div class="FormHeader">
+    <div class="text-center">
+      <img class="logo" src="../../assets/img/logo.png" width="30%" height="30%" />
     </div>
+    <div class="title text-center">
+      <span style="font-size: 200%">NEW VESSELS ONBOARDING</span>
+    </div>
+    <img class="displayed full-width"  src="../../assets/img/bateau.png"  />
+  </div>
+  <div class="FormContainer">
+    <form [formGroup]="vesselInfoForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" method="POST">
+      <div class="row">
+        <div class="col">
+          <!--Type Field-->
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Type">
+              <mat-optgroup *ngFor="let group of vesselsTypes" [label]="group.name" [disabled]="group.disabled">
+                <mat-option *ngFor="let t of group.vtype" [value]="t.value">
+                  {{ t.viewValue }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
 
-    <div class="row">
-      <div class="col">
-        <mat-form-field class="full-width">
-          <mat-label>Type</mat-label>
-          <mat-select formControlName="Type">
-            <mat-optgroup *ngFor="let group of vesselsTypes" [label]="group.name" [disabled]="group.disabled">
-              <mat-option *ngFor="let t of group.vtype" [value]="t.value">
-                {{t.viewValue}}
+          <!--IMO Field-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="IMO N°" formControlName="IMO" />
+          </mat-form-field>
+
+          <!--Name Field-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Name" formControlName="Name" />
+          </mat-form-field>
+
+          <!--Name Flag-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Flag" formControlName="Flag" />
+          </mat-form-field>
+
+          <!--Name Year-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number"  placeholder="Year Built" formControlName="YearBuilt" />
+          </mat-form-field>
+
+          <!--Shipyard-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Shipyard" formControlName="Shipyard" />
+          </mat-form-field>
+
+          <!--owner-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Owner" formControlName="Owner" />
+          </mat-form-field>
+
+          <!--operator-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Operator" formControlName="Operator" />
+          </mat-form-field>
+          
+          
+          <!--class-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="Class" formControlName="Class" />
+          </mat-form-field>
+
+          <!--atx-->
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Atex">
+              <mat-option *ngFor="let atx of atex" [value]="atx">
+                {{ atx }}
               </mat-option>
-            </mat-optgroup>
-          </mat-select>
+            </mat-select>
+          </mat-form-field>
 
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="IMO N°" formControlName="IMO">
-        </mat-form-field>
+          <!--AIS-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="AIS" formControlName="AIS" />
+          </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Name" formControlName="Name">
-        </mat-form-field>
+          <!--MMSI-->
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" placeholder="MMSI" formControlName="MMSI" />
+          </mat-form-field>
+        </div>
+        <div class="col">
 
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Flag" formControlName="Flag">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Year Built" formControlName="YearBuilt">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Shipyard" formControlName="Shipyard">
-        </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number" placeholder="GRT (mt)" formControlName="GRT" />
+          </mat-form-field>
 
 
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number" placeholder="DWT (mt)" formControlName="DWT" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number" placeholder="Capacity (m³)" formControlName="Capacity" />
+          </mat-form-field>
+          
+          <mat-form-field class="full-width">
+            <!-- <div  class="right" >
+              <mat-radio-group aria-label="Select the unit of measure">
+              <mat-radio-button value="1">m</mat-radio-button>
+              <mat-radio-button value="2">ft</mat-radio-button>
+            </mat-radio-group>
+          </div> -->
+            <input matInput maxlength="25" type="number" placeholder="Length (m/ft)" formControlName="Length" />
+            
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number" placeholder="Beam (m/ft)" formControlName="Beam" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput maxlength="25" type="number" placeholder="Draft (m/ft)" formControlName="Draft" />
+          </mat-form-field>
+
+          
+          
+          
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input  placeholder="Technical Details" formControlName="techDetails" accept="'.pdf'"></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+          </mat-form-field>
+
+<!--       
+          <mat-form-field class="full-width">
+
+            <ngx-mat-file-input  formControlName="linearity" placeholder="Linearity Table" accept="'.pdf'"></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+          </mat-form-field>
+          
+
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input  formControlName="q88" placeholder="Q88" accept="'.pdf'"></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+          </mat-form-field>
+         
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input  formControlName="sireReport" placeholder="SIRE Report" accept="'.pdf'"></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input formControlName="image" name="image1" placeholder="Image" accept="image/*" multiple></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+          </mat-form-field> -->
+
+        </div>
       </div>
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Operator" formControlName="Operator">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Class" formControlName="Class">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Atex">
-            <mat-option *ngFor="let atx of atex" [value]="atx">
-              {{ atx }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="AIS" formControlName="AIS">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="MMSI" formControlName="MMSI">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" type="number" placeholder="GRT (mt)" formControlName="GRT">
-        </mat-form-field>
-
-      </div>
-
-      <div class="col">
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" type="number" placeholder="DWT (mt)" formControlName="DWT">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" type="number" placeholder="Capacity (m³)" formControlName="Capacity">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" type="number" placeholder="Length (m/ft)" formControlName="Length">
-        </mat-form-field>
-
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" type="number" placeholder="Beam (m/ft)" formControlName="Beam">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25"type="number"  placeholder="Draft (m/ft)" formControlName="Draft">
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput maxlength="25" placeholder="Owner" formControlName="Owner">
-        </mat-form-field>
-
-
-      </div>
-    </div>
-
-    <!--fil section-->
-    <div class="row">
-
-      <div class="span2 input-file offset1">
-        <mat-form-field>
-          <ngx-mat-file-input formControlName="image" placeholder="Image" accept=".jpg"></ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="span2 input-file">
-        <mat-form-field>
-          <ngx-mat-file-input formControlName="techDetails" placeholder="Technical Details" accept="'.pdf'">
-          </ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="span2 input-file">
-        <mat-form-field>
-          <ngx-mat-file-input formControlName="linearity" placeholder="Linearity" accept="'.pdf'">
-          </ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="span2 input-file">
-        <mat-form-field>
-          <ngx-mat-file-input formControlName="q88" placeholder="Q88" accept="'.pdf'"></ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <div class="span2 input-file">
-        <mat-form-field>
-          <ngx-mat-file-input formControlName="sireReport" placeholder="SIRE Report" accept="'.pdf'">
-          </ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-        </mat-form-field>
-      </div>
-    </div>
-
-    <!--Tank section -->
-    <div class="tank-container">
-      <div style="display: table; margin: 20px auto;">
-        <mat-form-field class="full-width">
-          <input matInput type="number" min="1" max="20" placeholder="N°. of Tanks (m/ft)" id="nbr"
-            formControlName="NoTanks" (change)="getValue($event.target.value)">
-        </mat-form-field>
-      </div>
-
-
-      <div formArrayName="tanksProps" *ngFor='let t of vesselInfoForm.get("tanksProps").controls; let i= index'
-        style="width: 100%;">
-        <div [formGroupName]="i">
+      <div class="row">
+        <!--Tank section -->
+        <div class="tank-container">
           <div class="row">
-            <div class="col">
+            <div style="display: table; margin: 20px auto;">
               <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Tank name" formControlName="tankName">
+                <input matInput type="number" min="1" max="20" placeholder="N°. of Tanks" id="nbr"
+                  formControlName="NoTanks" (change)="getValue($event.target.value)" />
               </mat-form-field>
             </div>
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Tank Volume(m³)" formControlName="tankVolume">
-              </mat-form-field>
-            </div>
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput type="number" placeholder="Tonnage(tonne)" formControlName="tonnage">
-              </mat-form-field>
+          </div>
 
-            </div>
-            <div class="col">
-              <mat-checkbox formControlName="isSlopTank">Is sLop Tank</mat-checkbox>
+          <div formArrayName="tanksProps" *ngFor="let t of vesselInfoForm.get('tanksProps').controls; let i = index"
+            style="width: 100%;">
+            <div [formGroupName]="i" style="margin-bottom: 10px;">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput  placeholder="Tank name" formControlName="tankName" />
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput type="number" placeholder="Tank Volume(m³)" formControlName="tankVolume" />
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput type="number" placeholder="Tonnage(tonne)" formControlName="tonnage" />
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-checkbox formControlName="isSlopTank">Is sLop Tank</mat-checkbox>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
-    </div>
-
-
-    <!--Submint button-->
-    <div style="display: table; margin: 10px auto; padding: 10px;">
-        <button class="submit-btn" color="primary" mat-raised-button type="Save" (click)="onSubmit()">
-          Submit
-        </button>
-      
-
-    </div>
-  </form>
-
-
+      <div class="row">
+        <div class="col text-center">
+          <button class="submit-btn" color="primary" mat-raised-button type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

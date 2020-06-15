@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './app.component'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -13,10 +13,12 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatIconModule,
+  MatRadioModule,
   
  } from '@angular/material';
 
 import { FormsComponent } from './forms/forms.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,10 @@ import { FormsComponent } from './forms/forms.component';
     MatCheckboxModule,
     MatSelectModule,
     MaterialFileInputModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

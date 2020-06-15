@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
-
+// import {Http} from '@angular/http';
+import { HttpClient} from '@angular/common/http';
 
 export interface VesselType {
   value: string;
@@ -23,6 +23,9 @@ export interface TypesGroup {
 export class FormsComponent implements OnInit {
   tanksNumber = [1];
   vesselInfoForm: FormGroup;
+
+
+  
 
   // count = (<HTMLInputElement>document.getElementById("nbr")).value;
   counter(i: number) {
@@ -68,19 +71,15 @@ export class FormsComponent implements OnInit {
       ]
     }
   ];
-  genders = [
-    "Male",
-    "Female",
-    "Other"
-  ];
+
 
   atex = [
     "Atex1",
     "Atex2"
   ];
   TankDefaultNumber;
-  constructor(private fb: FormBuilder) { }
-
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
+   
   ngOnInit() {
     this.createForms();
 
@@ -152,6 +151,9 @@ export class FormsComponent implements OnInit {
       // return; 
     }
     console.log(this.vesselInfoForm.value);
+    this.http.post('http://localhost:5000/vessel/newVessel', this.vesselInfoForm.value).subscribe(
+    (response) => console.log(response),
+    (error) => console.log(error))
 
   }
 
