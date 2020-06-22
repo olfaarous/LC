@@ -91,7 +91,7 @@ export class FormsComponent implements OnInit {
 
     // user details form validations
     this.vesselInfoForm = this.fb.group({
-      Type: new FormControl(''),
+      Type: new FormControl(this.vesselsTypes[0].vtype[0].viewValue),
       IMO: new FormControl(''),
       Name: new FormControl(''),
       Flag: new FormControl(''),
@@ -107,9 +107,12 @@ export class FormsComponent implements OnInit {
       DWT: new FormControl(''),
       Capacity: new FormControl(''),
       Length: new FormControl(''),
+      LengthUnit:['Length_m'],
       Beam: new FormControl(''),
+      BeamUnit:['Beam_m'],
       Draft: new FormControl(''),
-      image: new FormControl(''),
+      DraftUnit:['Draft_m'],
+      images:this.fb.array([]),
       linearity: new FormControl(''),
       techDetails: new FormControl(''),
       q88: new FormControl(''),
@@ -146,14 +149,88 @@ export class FormsComponent implements OnInit {
 
   }
 
+    // We will create multiple form controls inside defined form controls images.
+    createItem(data): FormGroup {
+      return this.fb.group(data);
+  }
+
+    //Help to get all images controls as form array.
+    get images(): FormArray {
+      console.log(this.vesselInfoForm);
+      return this.vesselInfoForm.get('images') as FormArray;
+    };
+
+
+    detectFiles(event) {
+      let files = event.target.files;
+      if (files) {
+        for (let file of files) {
+          let reader = new FileReader();
+          reader.onload = (e: any) => {
+            // console.log("e.target.result", e.target.result);
+              this.images.push(this.createItem({
+                  file,
+                  url: e.target.result  //Base64 string for preview image
+              }));
+          }
+          reader.readAsDataURL(file);
+        }
+      }
+    }
+  
+    removePhoto(i){
+      this.images.removeAt(i);
+    }
+  
+  
+  get demoArray() {
+    return this.vesselInfoForm.get('tanksProps') as FormArray;
+  }
+  addTank(){
+    console.log('Input was incremented');
+      (<FormArray>this.vesselInfoForm.get('tanksProps')).push(this.addTanksFields());
+      let tempTankNumber =this.vesselInfoForm.get('NoTanks').value 
+      this.vesselInfoForm.get('NoTanks').setValue(tempTankNumber+1
+      );
+      this.TankDefaultNumber = tempTankNumber
+  }
+
   onSubmit() {
     if (this.vesselInfoForm.invalid) {
       // return; 
     }
     console.log(this.vesselInfoForm.value);
-    this.http.post('http://localhost:5000/vessel/newVessel', this.vesselInfoForm.value).subscribe(
+    let data = new FormData();
+    for (let image of this.vesselInfoForm.value.images){
+      data.append("file", image.file)
+      
+      // data.append("url", image.url)
+    }
+    
+    data.append("linearity", this.vesselInfoForm.value.linearity._files[0])
+    data.append("q88", this.vesselInfoForm.value.q88._files[0])
+    data.append("sire", this.vesselInfoForm.value.sireReport._files[0])
+    data.append("techdetails", this.vesselInfoForm.value.techDetails._files[0])
+    
+    this.http.post('http://localhost:4444/vessel/saveFiles', data).subscribe(
     (response) => console.log(response),
-    (error) => console.log(error))
+    (error) => console.log(error));
+
+
+    let DataInfo = this.vesselInfoForm.value;
+    let listimg= [];
+    for (let image of this.vesselInfoForm.value.images){
+      console.log(image.file.name)
+      listimg.push(image.file.name)
+      console.log(image.file.name)
+
+    }
+    DataInfo.images = listimg;
+    this.http.post('http://localhost:4444/vessel/newVessel', DataInfo).subscribe(
+    (response) => console.log(response),
+    (error) => console.log(error));
+    
+    
 
   }
 

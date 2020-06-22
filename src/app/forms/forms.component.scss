@@ -2,30 +2,32 @@ app-forms-page {
   .container {
     margin-top: 50px;
   }
-  
+
   .section-title {
     margin-bottom: 20px;
   }
-  .FormHeader{
+  .FormHeader {
     //border: 1px solid black;
   }
-  .FormHeader .title{
-    margin : 24px 0;
+  .FormHeader .title {
+    margin: 24px 0;
   }
-  .FormHeader .title span{
-    color: #202F8B;
+  .FormHeader .title span {
+    color: #202f8b;
     font-size: 22px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
   }
-  .FormContainer{
+  .FormContainer {
     padding: 0 20px;
     margin-top: 20px;
-    }
+  }
 
- 
-
-
+  .add-tank {
+    color: #202f8b;
+    margin: 2% 5%;
+    right: 13%;
+  }
 
   .full-width {
     width: 100%;
@@ -51,53 +53,86 @@ app-forms-page {
   }
 
   .mat-form-field-appearance-legacy .mat-form-field-underline {
-    background-color: #CDD0E5;
-}
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  color:#202F8B;
-}
-.mat-select-arrow {
-  color: rgb(48,62,147);
-}
+    background-color: #cdd0e5;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: #202f8b;
+  }
+  .mat-select-arrow {
+    color: rgb(48, 62, 147);
+  }
 
-.mat-input-element {
-  color: rgb(33, 51, 165);
-}
-.tank-container{
-  background-color: #F2F3F9;
-  width: 100%;
-  padding: 10px 20px;
-}
+  .mat-input-element {
+    color: rgb(33, 51, 165);
+  }
+  .tank-container {
+    background-color: #f2f3f9;
+    width: 100%;
+    padding: 10px 20px;
+  }
 
-.mat-select-value {
-  color: #202F8B !important;
-}
+  .mat-select-value {
+    color: #202f8b !important;
+  }
 
-//checkbox style
-label.mat-checkbox-layout{
-  margin-bottom: -1.75rem;
-}
-.mat-checkbox-ripple .mat-ripple-element,.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #202F8B !important;
-}
-span.mat-checkbox-label{
-  color: #202F8B !important;
-}
-.mat-raised-button.submit-btn{
-  background-color:#202F8B;
-  width:50%;
-  min-width: 104px;
-  max-width: 248px;
-}
-img.displayed {
-  display: block;
-  margin-left: auto;
-  margin-right: auto ;
-}
+  //checkbox style
+  label.mat-checkbox-layout {
+    margin-bottom: -1.75rem;
+  }
+  .mat-checkbox-ripple .mat-ripple-element,
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #202f8b !important;
+  }
+  span.mat-checkbox-label {
+    color: #202f8b !important;
+  }
+  .mat-raised-button.submit-btn {
+    background-color: #202f8b;
+    width: 50%;
+    min-width: 104px;
+    max-width: 248px;
+  }
+  img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.right {
-  position: absolute;
-  right: 0px;
-  padding: 10px;
-}
-}
+  .mat-radio-group{	
+    display:inline-block ;	
+  }	
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{	
+    border-color:#202F8B; 	
+  }	
+  .mat-radio-button.mat-accent .mat-radio-inner-circle{	
+    color:#202F8B; 	
+    background-color:#202F8B; 	
+  }	
+  .mat-radio-label{	
+    margin: auto;	
+  }	
+  .mat-radio-label-content{	
+    padding-left: 0px;	
+      padding-right: 11px;	
+  }	
+  .mat-radio-outer-circle {	
+    height: 17px;	
+    width: 17px;	
+  }	
+  .mat-radio-inner-circle {	
+    height: 17px;	
+    width: 17px;	
+  }	
+  .containerDiv {	
+    display: flex;	
+    width: 100%;	
+  }	
+  .flexible-width {	
+    flex: 1; /* my goal is that the width always fills up independent of browser width */	
+  }	
+  .fixed-width {	
+    width: 87px;	
+      margin-top: 20px;	
+      margin-left: 20px;	
+  }	
+  }

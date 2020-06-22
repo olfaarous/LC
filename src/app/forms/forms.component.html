@@ -1,12 +1,12 @@
 <div class="container">
   <div class="FormHeader">
     <div class="text-center">
-      <img class="logo" src="../../assets/img/logo.png" width="30%" height="30%" />
+      <img class="logo" src="././assets/img/logo.png" width="30%" height="30%" />
     </div>
     <div class="title text-center">
       <span style="font-size: 200%">NEW VESSELS ONBOARDING</span>
     </div>
-    <img class="displayed full-width"  src="../../assets/img/bateau.png"  />
+    <img class="displayed full-width" src="././assets/img/bateau.png" />
   </div>
   <div class="FormContainer">
     <form [formGroup]="vesselInfoForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" method="POST">
@@ -22,6 +22,7 @@
               </mat-optgroup>
             </mat-select>
           </mat-form-field>
+
 
           <!--IMO Field-->
           <mat-form-field class="full-width">
@@ -57,8 +58,8 @@
           <mat-form-field class="full-width">
             <input matInput maxlength="25" placeholder="Operator" formControlName="Operator" />
           </mat-form-field>
-          
-          
+
+
           <!--class-->
           <mat-form-field class="full-width">
             <input matInput maxlength="25" placeholder="Class" formControlName="Class" />
@@ -86,67 +87,81 @@
         <div class="col">
 
           <mat-form-field class="full-width">
-            <input matInput maxlength="25" type="number" placeholder="GRT (mt)" formControlName="GRT" />
+            <input matInput maxlength="25" type="number"   placeholder="GRT (mt)" formControlName="GRT" />
           </mat-form-field>
 
 
           <mat-form-field class="full-width">
-            <input matInput maxlength="25" type="number" placeholder="DWT (mt)" formControlName="DWT" />
+            <input matInput maxlength="25" type="number"  placeholder="DWT (mt)" formControlName="DWT" />
           </mat-form-field>
 
           <mat-form-field class="full-width">
-            <input matInput maxlength="25" type="number" placeholder="Capacity (m³)" formControlName="Capacity" />
-          </mat-form-field>
-          
-          <mat-form-field class="full-width">
-            <!-- <div  class="right" >
-              <mat-radio-group aria-label="Select the unit of measure">
-              <mat-radio-button value="1">m</mat-radio-button>
-              <mat-radio-button value="2">ft</mat-radio-button>
-            </mat-radio-group>
-          </div> -->
-            <input matInput maxlength="25" type="number" placeholder="Length (m/ft)" formControlName="Length" />
-            
+            <input matInput maxlength="25" type="number"   placeholder="Capacity (m³)" formControlName="Capacity" />
           </mat-form-field>
 
-          <mat-form-field class="full-width">
-            <input matInput maxlength="25" type="number" placeholder="Beam (m/ft)" formControlName="Beam" />
-          </mat-form-field>
+          <div class="full-width containerDiv">	
+            <mat-form-field class="flexible-width"> 	
+              <input matInput maxlength="25" type="number" placeholder="Length" formControlName="Length"   />	
+            </mat-form-field>	
+            <mat-radio-group formControlName="LengthUnit" class="fixed-width">	
+              <mat-radio-button value="Length_m">m</mat-radio-button>	
+              <mat-radio-button value="Length_ft">ft</mat-radio-button>	
+            </mat-radio-group>	
+          </div>
 
-          <mat-form-field class="full-width">
-            <input matInput maxlength="25" type="number" placeholder="Draft (m/ft)" formControlName="Draft" />
-          </mat-form-field>
-
-          
-          
-          
-          <mat-form-field class="full-width">
-            <ngx-mat-file-input  placeholder="Technical Details" formControlName="techDetails" accept="'.pdf'"></ngx-mat-file-input>
-            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
-          </mat-form-field>
-
-<!--       
-          <mat-form-field class="full-width">
-
-            <ngx-mat-file-input  formControlName="linearity" placeholder="Linearity Table" accept="'.pdf'"></ngx-mat-file-input>
-            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
-          </mat-form-field>
-          
-
-          <mat-form-field class="full-width">
-            <ngx-mat-file-input  formControlName="q88" placeholder="Q88" accept="'.pdf'"></ngx-mat-file-input>
-            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
-          </mat-form-field>
          
+	          <div class="full-width containerDiv">	
+            <mat-form-field class="flexible-width">	
+              <input matInput maxlength="25" type="number" placeholder="Beam" formControlName="Beam"/>	
+            </mat-form-field>	
+            <mat-radio-group formControlName="BeamUnit" class="fixed-width">	
+              <mat-radio-button value="Beam_m">m</mat-radio-button>	
+              <mat-radio-button value="Beam_ft">ft</mat-radio-button>	
+            </mat-radio-group>	
+          </div>	
+ 	
+          <div class="full-width containerDiv">	
+            <mat-form-field class="flexible-width">	
+              <input matInput maxlength="25" type="number" placeholder="Draft" formControlName="Draft"/>	
+            </mat-form-field>	
+            <mat-radio-group formControlName="DraftUnit"  class="fixed-width">	
+              <mat-radio-button value="Draft_m">m</mat-radio-button>	
+              <mat-radio-button value="Draft_ft">ft</mat-radio-button>	
+            </mat-radio-group>	
+          </div>
+
+
           <mat-form-field class="full-width">
-            <ngx-mat-file-input  formControlName="sireReport" placeholder="SIRE Report" accept="'.pdf'"></ngx-mat-file-input>
-            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
+            <ngx-mat-file-input placeholder="Technical Details" formControlName="techDetails" accept="'.pdf'">
+            </ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.svg" width="24px" height="24px" />
+          </mat-form-field>
+
+
+          <mat-form-field class="full-width">
+
+            <ngx-mat-file-input formControlName="linearity" placeholder="Linearity Table" accept="'.pdf'">
+            </ngx-mat-file-input>
+            <img matSuffix src="././assets/img/icon.svg" width="24px" height="24px" />
+          </mat-form-field>
+
+
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input formControlName="q88" placeholder="Q88" accept="'.pdf'"></ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.svg" width="24px" height="24px" />
           </mat-form-field>
 
           <mat-form-field class="full-width">
-            <ngx-mat-file-input formControlName="image" name="image1" placeholder="Image" accept="image/*" multiple></ngx-mat-file-input>
-            <img matSuffix src="../../assets/img/icon.png" width="24px" height="24px" />
-          </mat-form-field> -->
+            <ngx-mat-file-input formControlName="sireReport" placeholder="SIRE Report" accept="'.pdf'">
+            </ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.svg" width="24px" height="24px" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <ngx-mat-file-input  placeholder="Image"  (change)="detectFiles($event)"  accept="image/*" multiple class="custom-file-input form-control">
+            </ngx-mat-file-input>
+            <img matSuffix src="../../assets/img/icon.svg" width="24px" height="24px" />
+          </mat-form-field>
 
         </div>
       </div>
@@ -160,6 +175,8 @@
                   formControlName="NoTanks" (change)="getValue($event.target.value)" />
               </mat-form-field>
             </div>
+            <div class="add-tank" (click)="addTank()">
+              Add new Tank <img matSuffix src="../../assets/img/add.svg" width="24px" height="24px" /></div>
           </div>
 
           <div formArrayName="tanksProps" *ngFor="let t of vesselInfoForm.get('tanksProps').controls; let i = index"
@@ -168,7 +185,7 @@
               <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
-                    <input matInput  placeholder="Tank name" formControlName="tankName" />
+                    <input matInput placeholder="Tank name" formControlName="tankName" />
                   </mat-form-field>
                 </div>
                 <div class="col">
@@ -182,7 +199,7 @@
                   </mat-form-field>
                 </div>
                 <div class="col">
-                  <mat-checkbox formControlName="isSlopTank">Is sLop Tank</mat-checkbox>
+                  <mat-checkbox formControlName="isSlopTank">Box with slop tank</mat-checkbox>
                 </div>
               </div>
             </div>
